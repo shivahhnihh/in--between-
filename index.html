@@ -3,49 +3,84 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#1c1a1a">
+<meta name="theme-color" content="#A8C6E7">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="description" content="IN BETWEEN — For everything I felt, lived, and loved.">
 <link rel="manifest" href="manifest.json">
 <title>IN BETWEEN</title>
 <style>
-:root{
- --ink:#1c1a1a; --ivory:#f5efe6; --rose:#b98282; --sage:#899580;
- --terra:#b66f5b; --blue:#71879a; --gold:#c6a96b; --muted:#6e665e;
+ :root{
+ --butter:#FFF2B2;
+ --blue:#A8C6E7;
+ --sun:#FFE08A;
+ --cloud:#FFF7D6;
+ --morning:#7FA8D6;
+ --ink:#40566B;
+ --ink-deep:#31485D;
+ --muted:#66798A;
+ --white:#FFFDF4;
+ --line:#7FA8D655;
 }
-*{box-sizing:border-box} body{margin:0;background:var(--ink);color:var(--ivory);font-family:Georgia,serif}
-button,input,textarea,select{font:inherit} button{cursor:pointer}
-#splash{position:fixed;inset:0;background:#1c1a1a;z-index:50;display:grid;place-items:center;text-align:center;animation:fadeOut 1s 3.1s forwards}
-#splash img{width:min(72vw,360px);max-height:62vh;object-fit:contain;filter:drop-shadow(0 10px 35px #000)}
-@keyframes fadeOut{to{opacity:0;visibility:hidden}}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,var(--cloud) 0%,#fffaf0 58%,var(--blue) 150%);color:var(--ink-deep);font-family:Georgia,"Times New Roman",serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+#splash{position:fixed;inset:0;background:var(--cloud);z-index:100;display:grid;place-items:center;text-align:center;transition:opacity .8s ease,visibility .8s ease}
+#splash.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.splash-inner{padding:28px;opacity:0;animation:splashIn 1.2s ease-out forwards}
+.splash-tagline{font-family:"Bodoni 72","Baskerville","Times New Roman",serif;font-size:clamp(25px,7.2vw,48px);font-weight:400;line-height:1.15;letter-spacing:.035em;color:#303030;max-width:760px;text-wrap:balance}
+@keyframes splashIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+#acknowledgement{position:fixed;inset:0;background:var(--cloud);z-index:99;display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .8s ease,visibility .8s ease}
+#acknowledgement.show{opacity:1;visibility:visible}
+#acknowledgement img{width:100%;height:100%;object-fit:contain;display:block}
 .app{max-width:720px;margin:auto;padding:24px 18px 100px}
 header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
-.brand{letter-spacing:.28em;font-size:14px}.menu{border:0;background:none;color:var(--ivory);font-size:24px}
-h1{font-size:38px;font-weight:400;margin:10px 0 5px}.sub{color:#d8cdbf;font-style:italic;margin-bottom:24px}
-.primary{width:100%;border:1px solid #c6a96b88;background:linear-gradient(135deg,#2b2725,#3a3029);color:var(--ivory);padding:18px;border-radius:20px;letter-spacing:.05em;font-size:16px;box-shadow:0 12px 30px #0005}
+.brand{letter-spacing:.28em;font-size:14px;color:var(--morning)}
+.menu{border:0;background:none;color:var(--ink);font-size:24px}
+h1{font-size:38px;font-weight:400;margin:10px 0 5px;color:var(--ink-deep)}
+.sub{color:var(--muted);font-style:italic;margin-bottom:24px}
+.primary{width:100%;border:1px solid #7FA8D688;background:linear-gradient(135deg,var(--sun),var(--butter));color:var(--ink-deep);padding:18px;border-radius:20px;letter-spacing:.05em;font-size:16px;box-shadow:0 12px 30px #7FA8D633}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
-.card{border:0;border-radius:20px;padding:22px 16px;text-align:left;min-height:118px;color:#211e1b;box-shadow:0 8px 20px #0003;transition:.2s}
-.card:active{transform:scale(.98)} .cream{background:var(--ivory)}.pink{background:#c99a99}.green{background:#aab39e}.blue{background:#91a2b1}.terra{background:#c58470}
+.card{border:0;border-radius:20px;padding:22px 16px;text-align:left;min-height:118px;color:var(--ink-deep);box-shadow:0 8px 20px #7FA8D633;transition:.2s}
+.card:active{transform:scale(.98)}
+.cream{background:var(--cloud)}
+.pink{background:var(--butter)}
+.green{background:var(--blue)}
+.blue{background:var(--morning);color:var(--white)}
+.terra{background:var(--sun)}
 .card b{display:block;font-size:18px;margin-bottom:8px}.card span{font-size:13px;opacity:.72}
-.section{margin-top:28px}.section h2{font-weight:400;font-size:20px}.today{background:#24211f;border:1px solid #ffffff16;border-radius:22px;padding:20px}
-.today small{color:#c6a96b;letter-spacing:.12em}.today p{font-size:20px;line-height:1.5;margin:12px 0 0}
-.modal{position:fixed;inset:0;background:#000a;z-index:40;display:none;align-items:flex-end}.modal.open{display:flex}
-.sheet{background:#f5efe6;color:#1c1a1a;width:100%;max-height:92vh;overflow:auto;border-radius:28px 28px 0 0;padding:22px 18px 36px}
-.sheet h2{font-weight:400}.close{float:right;border:0;background:none;font-size:24px}
-label{display:block;font-size:13px;margin:15px 0 7px;color:#5d554d}
-input,textarea,select{width:100%;border:1px solid #d3c7b8;background:#fffaf2;border-radius:13px;padding:12px;color:#1c1a1a}
+.section{margin-top:28px}.section h2{font-weight:400;font-size:20px;color:var(--ink-deep)}
+.today{background:var(--cloud);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 8px 22px #7FA8D622}
+.today small{color:var(--morning);letter-spacing:.12em}.today p{font-size:20px;line-height:1.5;margin:12px 0 0}
+.modal{position:fixed;inset:0;background:#40566B66;z-index:40;display:none;align-items:flex-end}.modal.open{display:flex}
+.category-sheet{padding-bottom:28px}.category-kicker{color:var(--morning);letter-spacing:.16em;text-transform:uppercase}.category-empty{padding:18px 0;color:var(--muted);font-style:italic}.category-item{background:var(--cloud);border-radius:16px;padding:15px;margin:10px 0;border:1px solid #7FA8D644}.category-item h3{margin:0 0 5px;font-weight:400}.category-item small{color:var(--muted)}.category-item p{color:#506477;line-height:1.45}
+.sheet{background:var(--cloud);color:var(--ink-deep);width:100%;max-height:92vh;overflow:auto;border-radius:28px 28px 0 0;padding:22px 18px 36px;box-shadow:0 -12px 35px #40566B33}
+.sheet h2{font-weight:400}.close{float:right;border:0;background:none;font-size:24px;color:var(--ink)}
+label{display:block;font-size:13px;margin:15px 0 7px;color:var(--muted)}
+input,textarea,select{width:100%;border:1px solid #7FA8D655;background:var(--white);border-radius:13px;padding:12px;color:var(--ink-deep)}
 textarea{min-height:110px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.save{margin-top:18px;width:100%;padding:15px;border:0;border-radius:14px;background:#1c1a1a;color:#f5efe6}
-.memory{margin-top:12px;border-radius:20px;padding:17px;background:#282422;border-left:4px solid var(--gold)}
-.memory h3{margin:0 0 6px;font-weight:400}.memory p{margin:8px 0;color:#d8cdbf;line-height:1.45}.memory img{width:100%;border-radius:14px;margin-top:10px;max-height:360px;object-fit:cover}
-.empty{color:#a89e94;font-style:italic}
-.nav{position:fixed;bottom:0;left:0;right:0;background:#1c1a1af2;backdrop-filter:blur(12px);border-top:1px solid #fff1;display:flex;justify-content:center;z-index:20}
-.nav button{flex:1;max-width:180px;background:none;border:0;color:#bfb5aa;padding:13px 4px;font-size:12px}.nav button strong{display:block;font-size:20px;color:#f5efe6}
-.toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:#f5efe6;color:#1c1a1a;padding:11px 16px;border-radius:999px;display:none;z-index:60}
+.save{margin-top:18px;width:100%;padding:15px;border:0;border-radius:14px;background:var(--morning);color:var(--white);box-shadow:0 8px 18px #7FA8D644}
+.memory{margin-top:12px;border-radius:20px;padding:17px;background:var(--blue);border-left:4px solid var(--morning);box-shadow:0 8px 20px #7FA8D633}
+.memory h3{margin:0 0 6px;font-weight:400}.memory p{margin:8px 0;color:#506477;line-height:1.45}.memory img{width:100%;border-radius:14px;margin-top:10px;max-height:360px;object-fit:cover}
+.memory-actions{display:flex;justify-content:flex-end;margin-top:12px}.delete-btn{border:1px solid #40566B55;background:var(--cloud);color:#4d6173;border-radius:999px;padding:7px 12px;font-size:12px}.delete-btn:active{transform:scale(.97)}
+.category-actions{display:flex;justify-content:flex-end;margin-top:10px}.category-item .delete-btn{color:#4d6173;border-color:#7FA8D655}
+.empty{color:var(--muted);font-style:italic}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#FFF7D6F2;backdrop-filter:blur(12px);border-top:1px solid #7FA8D633;display:flex;justify-content:center;z-index:20}
+.nav button{flex:1;max-width:180px;background:none;border:0;color:var(--muted);padding:13px 4px;font-size:12px}.nav button strong{display:block;font-size:20px;color:var(--ink-deep)}
+.toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);background:var(--ink-deep);color:var(--cloud);padding:11px 16px;border-radius:999px;display:none;z-index:60}
 @media(min-width:700px){.app{padding-top:40px}.modal{align-items:center}.sheet{max-width:650px;margin:auto;border-radius:28px}}
 </style>
 </head>
 <body>
-<div id="splash"><img src="logo.png" alt="IN BETWEEN"></div>
+<div id="splash" aria-label="For everything I felt, lived, and loved.">
+  <div class="splash-inner">
+    <div class="splash-tagline">FOR EVERYTHING I FELT,LIVED &amp;LOVED!</div>
+  </div>
+</div>
+<div id="acknowledgement" aria-label="Acknowledgement">
+  <img src="acknowledgement.jpg" alt="Dear me acknowledgement" />
+</div>
 
 <main class="app">
 <header><div class="brand">IN BETWEEN</div><button class="menu" onclick="showAbout()">⋯</button></header>
@@ -54,12 +89,12 @@ textarea{min-height:110px;resize:vertical}.row{display:grid;grid-template-column
 <button class="primary" onclick="openModal()">＋ Keep a Memory</button>
 
 <div class="grid">
-<button class="card cream" onclick="scrollToId('memories')"><b>📸 Memories</b><span>Every little piece worth keeping.</span></button>
-<button class="card blue" onclick="scrollToId('memories')"><b>🌙 My Nights</b><span>Thoughts, feelings & quiet moments.</span></button>
-<button class="card green" onclick="showToast('People space — coming next')"><b>🫂 People</b><span>The ones who became part of the story.</span></button>
-<button class="card terra" onclick="showToast('Places space — coming next')"><b>🌍 Places</b><span>Where your memories happened.</span></button>
-<button class="card pink" onclick="showToast('Letters space — coming next')"><b>💌 Letters</b><span>Notes for future-you.</span></button>
-<button class="card cream" onclick="showToast('Voice notes are ready in the next build')"><b>🎙️ Voices</b><span>Keep moments in your own voice.</span></button>
+<button class="card cream" onclick="openCategory('memories')"><b>📸 Memories</b><span>Every little piece worth keeping.</span></button>
+<button class="card blue" onclick="openCategory('nights')"><b>🌙 My Nights</b><span>Thoughts, feelings & quiet moments.</span></button>
+<button class="card green" onclick="openCategory('people')"><b>🫂 People</b><span>The ones who became part of the story.</span></button>
+<button class="card terra" onclick="openCategory('places')"><b>🌍 Places</b><span>Where your memories happened.</span></button>
+<button class="card pink" onclick="openCategory('letters')"><b>💌 Letters</b><span>Notes for future-you.</span></button>
+<button class="card cream" onclick="openCategory('voices')"><b>🎙️ Voices</b><span>Keep moments in your own voice.</span></button>
 </div>
 
 <section class="section">
@@ -83,6 +118,7 @@ textarea{min-height:110px;resize:vertical}.row{display:grid;grid-template-column
 <button class="close" onclick="closeModal()">×</button>
 <h2>Keep this moment 🤍</h2>
 <label>What's this memory called?</label><input id="title" placeholder="First Onam in Punjab">
+<label>Space</label><select id="category"><option value="memories">📸 Memories</option><option value="nights">🌙 My Nights</option><option value="people">🫂 People</option><option value="places">🌍 Places</option><option value="letters">💌 Letters</option><option value="voices">🎙️ Voices</option></select>
 <div class="row">
 <div><label>Date</label><input id="date" type="date"></div>
 <div><label>Feeling</label><select id="mood"><option value="cream">Warm</option><option value="pink">Loved</option><option value="green">Peaceful</option><option value="blue">Nostalgic</option><option value="terra">Excited</option></select></div>
@@ -92,6 +128,16 @@ textarea{min-height:110px;resize:vertical}.row{display:grid;grid-template-column
 <label>What do I want to remember?</label><textarea id="remember" placeholder="The little detail you never want to lose."></textarea>
 <label>Add a photo</label><input id="photo" type="file" accept="image/*">
 <button class="save" onclick="saveMemory()">♡ Keep this memory</button>
+</div></div>
+
+<div class="modal" id="categoryModal" onclick="if(event.target===this)closeCategory()">
+<div class="sheet category-sheet">
+<button class="close" onclick="closeCategory()">×</button>
+<small id="categoryKicker" class="category-kicker"></small>
+<h2 id="categoryTitle">Memories</h2>
+<p id="categoryIntro" class="sub"></p>
+<div id="categoryList"></div>
+<button class="save" onclick="openModalFromCategory()">＋ Add to this space</button>
 </div></div>
 
 <div class="toast" id="toast"></div>
@@ -110,27 +156,77 @@ function saveMemory(){
  const finish=(photo='')=>{
    const m={id:Date.now(),title,date:document.getElementById('date').value,place:document.getElementById('place').value.trim(),
    story:document.getElementById('story').value.trim(),remember:document.getElementById('remember').value.trim(),
-   mood:document.getElementById('mood').value,photo};
-   memories.unshift(m); localStorage.setItem(KEY,JSON.stringify(memories)); render(); closeModal(); clearForm(); showToast('Kept safely in your little world 🤍');
+   mood:document.getElementById('mood').value,category:document.getElementById('category').value,photo};
+   memories.unshift(m); localStorage.setItem(KEY,JSON.stringify(memories)); render(); renderCategory(); closeModal(); clearForm(); showToast('Kept safely in your little world 🤍');
  };
  if(file){const r=new FileReader();r.onload=()=>finish(r.result);r.readAsDataURL(file)} else finish();
 }
 function clearForm(){['title','place','story','remember'].forEach(id=>document.getElementById(id).value='');document.getElementById('photo').value=''}
 function render(){
  const box=document.getElementById('memoryList'); box.innerHTML='';
- if(!memories.length){box.innerHTML='<div class="empty">Nothing here yet. Start with one small moment.</div>';return}
+ if(!memories.length){box.innerHTML='<div class="empty">Nothing here yet. Start with one small moment.</div>';document.getElementById('feeling').textContent='Your first little feeling goes here.';return}
  document.getElementById('feeling').textContent=memories[0].remember||memories[0].story||'A little piece of life worth keeping.';
  memories.forEach(m=>{
    const d=document.createElement('article'); d.className='memory';
-   d.innerHTML=`<small>${m.date||''}${m.place?' · '+escapeHtml(m.place):''}</small><h3>${escapeHtml(m.title)}</h3>
+   d.innerHTML=`<small>${escapeHtml(m.date||'')}${m.place?' · '+escapeHtml(m.place):''}</small><h3>${escapeHtml(m.title)}</h3>
    ${m.story?'<p>'+escapeHtml(m.story)+'</p>':''}${m.remember?'<p>♡ '+escapeHtml(m.remember)+'</p>':''}
-   ${m.photo?'<img src="'+m.photo+'" alt="Memory photo">':''}`;
+   ${m.photo?'<img src="'+m.photo+'" alt="Memory photo">':''}
+   <div class="memory-actions"><button class="delete-btn" onclick="deleteMemory(${m.id})">Delete memory</button></div>`;
    box.appendChild(d);
  })
 }
+function deleteMemory(id){
+ const m=memories.find(x=>x.id===id);
+ if(!m)return;
+ if(!confirm('Delete this memory permanently?'))return;
+ memories=memories.filter(x=>x.id!==id);
+ localStorage.setItem(KEY,JSON.stringify(memories));
+ render(); renderCategory(); showToast('Memory deleted.');
+}
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+const CATEGORY_INFO={
+ memories:['MEMORIES','Memories','Every little piece worth keeping.'],
+ nights:['MY NIGHTS','My Nights','Thoughts, feelings & quiet moments.'],
+ people:['PEOPLE','People','The ones who became part of the story.'],
+ places:['PLACES','Places','Where your memories happened.'],
+ letters:['LETTERS','Letters','Notes for future-you.'],
+ voices:['VOICES','Voices','Keep moments in your own voice.']
+};
+let activeCategory='memories';
+function openCategory(cat){activeCategory=cat;const info=CATEGORY_INFO[cat]||CATEGORY_INFO.memories;document.getElementById('categoryKicker').textContent=info[0];document.getElementById('categoryTitle').textContent=info[1];document.getElementById('categoryIntro').textContent=info[2];document.getElementById('categoryModal').classList.add('open');renderCategory();}
+function closeCategory(){document.getElementById('categoryModal').classList.remove('open')}
+function openModalFromCategory(){closeCategory();openModal();document.getElementById('category').value=activeCategory;}
+function renderCategory(){
+ const box=document.getElementById('categoryList');
+ const list=memories.filter(m=>(m.category||'memories')===activeCategory);
+ box.innerHTML='';
+ if(!list.length){box.innerHTML='<div class="category-empty">Nothing here yet. Add your first little moment to this space. 🤍</div>';return}
+ list.forEach(m=>{
+   const d=document.createElement('article'); d.className='category-item';
+   d.innerHTML=`<small>${escapeHtml(m.date||'')}${m.place?' · '+escapeHtml(m.place):''}</small>
+   <h3>${escapeHtml(m.title)}</h3>
+   ${m.story?'<p>'+escapeHtml(m.story)+'</p>':''}${m.remember?'<p>♡ '+escapeHtml(m.remember)+'</p>':''}
+   ${m.photo?'<img src="'+m.photo+'" alt="Memory photo" style="width:100%;border-radius:12px;margin-top:8px">':''}
+   <div class="category-actions"><button class="delete-btn" onclick="deleteMemory(${m.id})">Delete</button></div>`;
+   box.appendChild(d)
+ })
+}
 function showAbout(){alert('IN BETWEEN\\n\\nFor everything I felt, lived, and loved.\\n\\nYour private little memory space.')}
 render();
+
+// Opening sequence: tagline only → exact acknowledgement → home.
+(function startOpeningSequence(){
+  const splash=document.getElementById('splash');
+  const ack=document.getElementById('acknowledgement');
+  setTimeout(()=>{
+    splash.classList.add('hidden');
+    ack.classList.add('show');
+  },3200);
+  setTimeout(()=>{
+    ack.classList.remove('show');
+  },8200);
+})();
+
 if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>

@@ -1,22 +1,21 @@
-IN BETWEEN — personal memory app
-====================================
+IN BETWEEN
+For everything I felt, lived & loved.
 
-Version 1 includes:
-- Your selected IN BETWEEN logo and splash screen
-- "For everything I felt, lived, and loved." tagline
-- A lively mobile-first home layout
+Final serious build.
+
+Opening sequence:
+1. Only the tagline appears.
+2. The supplied acknowledgement artwork appears exactly as provided.
+3. The IN BETWEEN home screen opens.
+
+Features:
+- Pastel Buttercup Sky / Dewy Blue / Sunwashed / Cloud Puff / Morning Breeze palette
+- Supplied IN BETWEEN logo used as the PWA icon
 - Add memories with date, place, feeling, writing and photo
-- Local browser storage for saved memories
-- Memory archive and "Today, I felt..." surface
-- PWA manifest + service worker for installable/offline-capable hosting
+- Six memory spaces: Memories, My Nights, People, Places, Letters, Voices
+- Delete option for saved memories
+- Browser local storage; memories stay on the device/browser
+- PWA manifest and service worker for installable/offline-capable hosting
 
-IMPORTANT:
-Opening index.html directly is useful for previewing, but browser security rules mean
-the full PWA installation experience requires the app to be served from HTTPS (or localhost).
-After hosting the folder on an HTTPS site, open it in Chrome on Android and use
-"Install app" / "Add to Home screen."
-
-Privacy:
-This first version stores memories in the browser's local storage. It does not upload
-them to a server. Clearing browser/app data can remove them, so a later version should
-add encrypted backup/export before relying on it for irreplaceable memories.
+Important:
+Opening index.html directly is useful for previewing. Full PWA installation requires HTTPS or localhost.

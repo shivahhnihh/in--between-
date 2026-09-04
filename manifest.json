@@ -4,12 +4,12 @@
   "description": "For everything I felt, lived, and loved.",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#1c1a1a",
-  "theme_color": "#1c1a1a",
+  "background_color": "#FFF7D6",
+  "theme_color": "#A8C6E7",
   "icons": [
     {
       "src": "logo.png",
-      "sizes": "512x512",
+      "sizes": "1536x1536",
       "type": "image/png",
       "purpose": "any maskable"
     }
